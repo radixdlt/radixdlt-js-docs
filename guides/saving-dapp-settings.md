@@ -14,7 +14,7 @@ Loading and saving settings are fundamental activities in the workflow of any so
 
 ### Saving <a id="saving"></a>
 
-Before we start, your application needs to have an [**identity**](../radix-concepts.md#identity) in the ledger. Let's assume that your dApp has an identity `appIdentity` already available, and that we have the following settings to save:
+Before we start, your application needs to have an [**identity**](https://docs.radixdlt.com/alpha/learn/glossary#identity) in the ledger. Let's assume that your dApp has an identity `appIdentity` already available, and that we have the following settings to save:
 
 ```javascript
 const mySettings = {
@@ -31,7 +31,7 @@ const mySettings = {
 
 To save the application settings to the ledger, you have to...
 
-* open a [**node**](../radix-concepts.md#nodes) connection to the network,
+* open a [**node**](https://docs.radixdlt.com/alpha/learn/glossary#nodes) connection to the network,
 * prepare the payload \(`appSettings`\) by encoding `mySettings`,
 * build a transaction using `RadixTransactionBuilder`,
 * sign and submit the transaction with the `appIdentity` identity.
@@ -64,8 +64,8 @@ transactionStatus.subscribe({
 
 As in the previous example, let's assume that your dApp has an identity `appIdentity` already available. Loading settings from the ledger is simple and straight forward. To load the application settings from the ledger, you have to...
 
-* open a [**node**](../radix-concepts.md#nodes) connection to the network,
-* get the [**address**](../radix-concepts.md#address) of the application account
+* open a [**node**](https://docs.radixdlt.com/alpha/learn/glossary#nodes) connection to the network,
+* get the [**address**](https://docs.radixdlt.com/alpha/learn/glossary#address) of the application account
 * subscribe to the account **data system** to get all the messages signed by the application
 
 ```javascript

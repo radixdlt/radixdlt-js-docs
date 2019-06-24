@@ -26,7 +26,7 @@ export default class CustomAccountSystem implements RadixAccountSystem {
 ```
 
 {% hint style="info" %}
-**Note:** the _atomUpdate_ has an action field, which can be **STORE** or **DELETE**.
+**Note:** the `atomUpdate` has an action field, which can be **STORE** or **DELETE**.
 
 A **DELETE** can occur when an **Atom** fails to validate or is rejected by the consensus. It's crucial to handle it correctly in the particular context of the application.
 {% endhint %}

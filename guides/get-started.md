@@ -1,7 +1,5 @@
 # Getting started
 
-This tutorial is written for people who prefer to learn by doing. You might find this tutorial and the [GitHub wiki](https://github.com/radixdlt/radixdlt-js) complementary to each other.
-
 ## Introduction <a id="introduction"></a>
 
 During this tutorial, we will build a small distributed App \(dApp\). The techniques you’ll learn in this guide are fundamental to building any dApp on [Radix](http://www.radixdlt.com/), and mastering it will give you a better understanding of Radix distributed ledger.
@@ -9,7 +7,7 @@ During this tutorial, we will build a small distributed App \(dApp\). The techni
 This guide is divided into several sections:
 
 * **​**[**Basic Setup**](get-started.md#basic-setup) will give you a starting point to follow the tutorial.
-* **​**[**Tech overview**](get-started.md#overview) will teach you the fundamentals of Radix's architecture.
+* **​**[**Overview**](get-started.md#overview) will teach you the fundamentals of Radix's architecture.
 * **​**[**Getting some Radix tokens**](get-started.md#getting-some-radix-test-tokens) will show you how to build your first basic dApp.
 * **​**[**Beyond the basics**](get-started.md#beyond-the-basics) will give you additional examples to get a deeper insight into the strengths of Radix JS library.
 
@@ -46,7 +44,7 @@ As an optional step, you can start the server using `npm start` and open [http:/
 
 ### Installation <a id="installation"></a>
 
-You can install the _**radixdlt**_ library in your Node.js project using your preferred package manager:
+You can install the **`radixdlt`** library in your Node.js project using your preferred package manager:
 
 #### Npm <a id="npm"></a>
 
@@ -61,7 +59,7 @@ yarn add radixdlt
 ```
 
 {% hint style="info" %}
-**Note:** the radixdlt library provides full TypeScript support
+**Note:** the library provides full TypeScript support
 {% endhint %}
 
 ### Recommendations <a id="recommendations"></a>
@@ -78,11 +76,71 @@ We’ll also assume that you’re familiar with programming concepts like functi
 If you need a quick review on Reactive programming, we recommend reading [our blog post](https://www.radixdlt.com/post/reactive-programming-and-rxjs).
 {% endhint %}
 
-## Tech overview <a id="overview"></a>
+## Overview <a id="overview"></a>
 
 Now that you’re set up, let’s dig a bit on the concepts that make Radix a unique distributed ledger technology, so we can share a common language.
 
-/// --- ///
+### Universe <a id="universe"></a>
+
+A **Universe** represents the Radix network. It maintains connections to **Nodes**, and you can ask it to give you a connection to a node that serves a specific **Shard**.
+
+Because Radix is built to be sharded from the ground up, it is not enough to have a single connection to the network - depending on what addresses you’re trying to work with, you might need a number of connections.
+
+### Shards <a id="shards"></a>
+
+A **Shard** is simply a segment of a Universe. A public Radix network \(Universe\) is segmented into a very large shard space \(currently 2^64 shards\). The shard number of an address is deterministically calculated, so it's trivial for anyone to correctly calculate the shard a public key lives on.
+
+### Nodes <a id="nodes"></a>
+
+A **Node** provides general computing and networking resources to the network. Nodes are responsible for validating events and transactions, relaying messages, resolving conflicts and executing scripts on the network. They also maintain a subset of the shard space and get fees in proportion to their work.
+
+### Atoms <a id="atoms"></a>
+
+An **Atom** is the fundamental unit of storage on Radix's distributed ledger. Its structure defines one or more actions which update the ledger's state as an atomic transaction, that is, all-or-nothing.
+
+### Account <a id="account"></a>
+
+An **Account** represents all the data stored for a user on the ledger. This includes tokens, but also arbitrary data, as well as more advanced types of transactions in the future such as multi-sig and Scrypto smart contracts.
+
+### Address <a id="address"></a>
+
+An **Address** lives in a **Shard** and is the start and end point for any **Atom** in the Radix Universe. It's also a reference to an **Account** and allows a user to receive tokens and/or data from other users. A Radix address is generated from a public key and a **Universe** checksum.
+
+{% hint style="info" %}
+Keep in mind, the defined **Universe** affects the generated **Address**.
+{% endhint %}
+
+
+
+When an **Account** is connected to the network, it will take any incoming **Atoms** and pass them through the account systems. The default systems are:
+
+* **Transfer System**, which keeps a list of transactions involving this account as well as the account balance for all the different tokens in the account
+* **Radix Messaging System**, which manages the different Radix messaging chats this account is involved in
+* **Data System** used for custom data stored on the ledger
+
+{% hint style="info" %}
+You can create your own custom **Account Systems** if you want access to the raw **Atoms**.
+{% endhint %}
+
+### Identity <a id="identity"></a>
+
+An **Identity** represents a private key which can sign **Atoms** and read encrypted data. This private key can be stored in the application, or in the future, it might live elsewhere such as the user's wallet application or hardware wallet.
+
+{% hint style="info" %}
+The only type of **Identity** currently available is the _**Simple Identity,**_ and it has a private key stored in memory.
+{% endhint %}
+
+### Transaction Builder <a id="transaction-builder"></a>
+
+The **Transaction Builder** handles creating and submitting to the network any kind of **Atoms** that the Radix ledger can accept. Right now this means _token transfer_ atoms, _data payload_ atoms and _Radix messaging_ atoms \(which are just a particular case of the data payload atoms\). In the future, the atom model will be a lot more powerful.
+
+### Faucet Service
+
+The **Faucet** service is a simple development service running on the Radix network that sends free test tokens back to any account that sends a message to it.
+
+{% hint style="info" %}
+In the **ALPHANET** Universe, the **Faucet** service address is `9ey8A461d9hLUVXh7CgbYhfmqFzjzSBKHvPC8SMjccRDbkTs2aM`
+{% endhint %}
 
 ## Getting some Radix test tokens <a id="getting-some-radix-test-tokens"></a>
 
@@ -90,9 +148,9 @@ Now that we have done a brief overview of the concepts behind Radix and we share
 
 ### Initializing the Universe <a id="initializing-the-universe"></a>
 
-The first step, before we can interact with the ledger, is to choose which [**Universe**](../radix-concepts.md#universe) we want to connect to. We will use the **ALPHANET** universe configuration since it's our main testing environment, and the other development universes are used for testing unstable features.
+The first step, before we can interact with the ledger, is to choose which [Universe](get-started.md#universe) we want to connect to. We will use the **ALPHANET** universe configuration since it's our main testing environment, and the other development universes are used for testing unstable features.
 
-Now, to initialize the universe we have to import the _radixUniverse_ singleton from the library, and call the bootstrap function with the _ALPHANET_ universe configuration:
+Now, to initialize the universe we have to import the `radixUniverse` singleton from the library, and call the bootstrap function with the _ALPHANET_ universe configuration:
 
 ```javascript
 import {radixUniverse, RadixUniverse} from 'radixdlt'
@@ -102,7 +160,7 @@ import {radixUniverse, RadixUniverse} from 'radixdlt'
 
 ### Creating our own Identity <a id="creating-our-own-identity"></a>
 
-As we want to interact with the ledger and be able to sign and decrypt atoms, we'll need to have our own [**Identity**](../radix-concepts.md#identity). To create a new random identity, we use the `RadixIdentityManager`:
+As we want to interact with the ledger and be able to sign and decrypt atoms, we'll need to have our own [Identity](get-started.md#identity). To create a new random identity, we use the `RadixIdentityManager`:
 
 ```javascript
 const identityManager = new RadixIdentityManager()
@@ -114,7 +172,7 @@ Now we create a new random identity using the Identity Manager's _generateSimple
 const myIdentity = identityManager.generateSimpleIdentity()
 ```
 
-With it, we can easily get our own [**Account**](../radix-concepts.md#account) using the _account_ reference:
+With it, we can easily get our own [Account](get-started.md#account) using the _account_ reference:
 
 ```javascript
 const myAccount = myIdentity.account​​
@@ -123,7 +181,7 @@ console.log('My account address: ', myAccount.getAddress())
 ```
 
 {% hint style="info" %}
-Each [**Identity**](../radix-concepts.md#identity) automatically comes with a corresponding [**Account**](../radix-concepts.md#account).
+Each [Identity](get-started.md#identity) automatically comes with a corresponding [Account](get-started.md#account).
 {% endhint %}
 
 ### Opening the connection <a id="opening-the-connection"></a>
@@ -134,7 +192,7 @@ Now that we have our account, the next step is connect it to the network. We do 
 myAccount.openNodeConnection()
 ```
 
-This call opens a connection to a [**Node**](../radix-concepts.md#nodes) from the _ALPHANET_ universe which serves the shard where our account lives on, and asks the node for all the atoms in the address. It will also maintain a connection to the network until we destroy the account.
+This call opens a connection to a [Node](get-started.md#nodes) from the _ALPHANET_ universe which serves the shard where our account lives on, and asks the node for all the atoms in the address. It will also maintain a connection to the network until we destroy the account.
 
 {% hint style="success" %}
 **Tip:** if a connection to a node dies, a new one will be found automatically.
@@ -142,7 +200,7 @@ This call opens a connection to a [**Node**](../radix-concepts.md#nodes) from th
 
 ### Getting the Faucet's account <a id="getting-the-faucets-account"></a>
 
-To get the [**Faucet's**](../radix-concepts.md#faucet-service) account, we resolve the address using the _fromAddress\(...\)_ method:
+To get the [Faucet's](get-started.md#faucet-service) account, we resolve the address using the _fromAddress\(...\)_ method:
 
 ```javascript
 const faucetAddress = '9ey8A461d9hLUVXh7CgbYhfmqFzjzSBKHvPC8SMjccRDbkTs2aM'​​
@@ -162,7 +220,7 @@ For accounts that won't be connected to the network, since you won't need any ac
 
 ### Sending a message to the Faucet <a id="sending-a-message-to-the-faucet"></a>
 
-Now that we have the Faucet's account and our own account connected to the network, we are ready to send a message and request some free tokens to the Faucet service. We send the message using RadixTransactionBuilder's _createRadixMessageAtom\(...\)_ method, and signing the result [**Atom**](../radix-concepts.md#atoms) with our [**Identity**](../radix-concepts.md#identity):
+Now that we have the Faucet's account and our own account connected to the network, we are ready to send a message and request some free tokens to the Faucet service. We send the message using RadixTransactionBuilder's _createRadixMessageAtom\(...\)_ method, and signing the result [Atom](get-started.md#atoms) with our [Identity](get-started.md#identity):
 
 ```javascript
 const message = 'Dear Faucet, may I please have some money? (◕ᴥ◕)'​
@@ -174,7 +232,7 @@ RadixTransactionBuilder
 
 ### Subscribing to balance updates <a id="subscribing-to-balance-updates"></a>
 
-After we send the message, we have to subscribe to the Balance subject from the Transfer system to know when we receive the free test tokens sent by the [**Faucet**](../radix-concepts.md#faucet-service) service:
+After we send the message, we have to subscribe to the Balance subject from the Transfer system to know when we receive the free test tokens sent by the [Faucet](get-started.md#faucet-service) service:
 
 ```javascript
 myAccount.transferSystem.balanceSubject.subscribe(balance => {
@@ -185,7 +243,7 @@ myAccount.transferSystem.balanceSubject.subscribe(balance => {
 ```
 
 {% hint style="info" %}
-The _balance_ includes the type of token, and the amount of tokens in subunits.
+The `balance` includes the type of token, and the amount of tokens in subunits.
 {% endhint %}
 
 ### Handling tokens in Radix <a id="handling-tokens-in-radix"></a>
@@ -298,4 +356,12 @@ As we reach the end of our dApp example, we want to share some extra code snippe
 * [Manage identities](../examples/code-examples/identity-management.md)
 * ​[Manage transactions​](../examples/code-examples/transaction-management.md)
 * ​[Manage private keys​](../examples/code-examples/private-key-management.md)
+
+### Join the Radix Community
+
+* ​[Telegram](https://t.me/radix_dlt) for general chat
+* ​[Discord](https://discord.gg/7Q7HSZZ) for developer chat
+* ​[Reddit](https://reddit.com/r/radix) for general discussion
+* ​[Twitter](https://twitter.com/radixdlt) for announcements
+* ​[Email newsletter](https://radixdlt.typeform.com/to/nyKvMV) for weekly updates
 

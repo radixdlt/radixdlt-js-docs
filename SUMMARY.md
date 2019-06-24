@@ -1,8 +1,8 @@
 # Table of contents
 
 * [JavaScript client library](README.md)
-* [Radix concepts](radix-concepts.md)
 * [GitHub project](https://github.com/radixdlt/radixdlt-js)
+* [Knowledge Base](https://docs.radixdlt.com/)
 
 ## Guides
 
