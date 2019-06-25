@@ -22,7 +22,7 @@
 
 ## Community
 
-* [Telegram](https://t.me/radixdlt)
+* [Telegram](https://t.me/radix_dlt)
 * [Discord](https://discord.gg/7Q7HSZZ)
 * [Reddit](https://reddit.com/r/radix)
 * [Twitter](https://twitter.com/radixdlt)
