@@ -17,6 +17,7 @@
   * [Atom management](examples/code-examples/manage-atoms.md)
   * [Identity management](examples/code-examples/identity-management.md)
   * [Private key management](examples/code-examples/private-key-management.md)
+  * [Token management](examples/code-examples/token-management.md)
   * [Transaction management](examples/code-examples/transaction-management.md)
 * [Demo applications](examples/demo-applications.md)
 

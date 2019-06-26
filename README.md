@@ -20,7 +20,7 @@ A JavaScript client library for interacting with a [Radix](https://www.radixdlt.
 
 ## Features
 
-* Full Typescript support
+* Full TypeScript support
 * Follow the reactive programming pattern using [RxJS](https://rxjs-dev.firebaseapp.com/)​
 * Cryptography using the [elliptic](https://github.com/indutny/elliptic) library
 * Automatically manage connection to the Radix [Universe](https://docs.radixdlt.com/alpha/learn/glossary#universe) in a sharded environment
@@ -31,16 +31,10 @@ A JavaScript client library for interacting with a [Radix](https://www.radixdlt.
 
 ## Installation
 
-To install the library using your preferred package manager, run:
+To install the library in your own project using [yarn package manager](https://yarnpkg.com/):
 
 ```bash
 yarn add radixdlt
-```
-
-or
-
-```bash
-npm install radixdlt --save
 ```
 
 ## Example applications
@@ -56,31 +50,23 @@ To build the library using your preferred package manager, run:
 yarn install && yarn build
 ```
 
-or
-
-```bash
-npm install && npm build
-```
-
 ### Test
 
 Run tests with `yarn test`.
 
 ## Known issues
 
-### Angular
+### Angular 6+
 
-Apparently on Angular 6+ versions, the node module polyfills from webpack are not bundled. To fix your issue with crypto, path, etc. go to `node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/webpack-configs/browser.js` and do the following change:
-
-```javascript
-node: { crypto: true, path: true }
+```text
+Error: Can't resolve 'crypto'
 ```
 
-{% hint style="warning" %}
-**Note:** this is not a reproducible fix. If you install your modules in a new location, you will lose this change.
-{% endhint %}
+On Angular 6+ versions, the node module polyfills from webpack are not bundled. To fix your issue with crypto, path, etc. use the fix described in [this answer](https://github.com/angular/angular-cli/issues/1548#issuecomment-427653778).
 
+## License
 
+The `radixdlt-js` library is released under the [MIT License](https://github.com/radixdlt/radixdlt-js/blob/master/LICENSE).
 
 ## Join the Radix Community <a id="join-the-radix-community"></a>
 
