@@ -1,6 +1,8 @@
 # Table of contents
 
 * [JavaScript client library](README.md)
+* [GitHub project](https://github.com/radixdlt/radixdlt-js)
+* [Knowledge Base](https://docs.radixdlt.com/)
 
 ## Guides
 
@@ -18,8 +20,6 @@
   * [Token management](examples/code-examples/token-management.md)
   * [Transaction management](examples/code-examples/transaction-management.md)
 * [Demo applications](examples/demo-applications.md)
-* [GitHub project](https://github.com/radixdlt/radixdlt-js)
-* [Knowledge Base](https://docs.radixdlt.com/)
 
 ## Community
 
