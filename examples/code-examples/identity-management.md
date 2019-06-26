@@ -21,7 +21,7 @@ In the following code example, we create a new simple identity using the `RadixI
 
 ```javascript
 const identityManager = new RadixIdentityManager()
-const myIdentity = identityManager.generateSimpleIdentity()  
+const myIdentity = identityManager.generateSimpleIdentity()
 ```
 
 With it, we can easily access our own Account using the `account` reference:

@@ -1,6 +1,6 @@
 # General use
 
-## Introduction <a id="manage-identities"></a>
+## Introduction  <a id="manage-identities"></a>
 
 Let's review some code examples on how to handle generic tasks:
 

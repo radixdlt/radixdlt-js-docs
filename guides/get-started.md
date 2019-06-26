@@ -351,8 +351,8 @@ As we reach the end of our dApp example, we want to share some extra code snippe
 
 ### Code examples <a id="code-examples"></a>
 
-* [Manage accounts​](../examples/code-examples/manage-accounts.md)
-* [Manage atoms​](../examples/code-examples/manage-atoms.md)
+* [Manage accounts​](../examples/code-examples/account-management.md)
+* [Manage atoms​](../examples/code-examples/atom-management.md)
 * [Manage identities](../examples/code-examples/identity-management.md)
 * ​[Manage transactions​](../examples/code-examples/transaction-management.md)
 * ​[Manage private keys​](../examples/code-examples/private-key-management.md)

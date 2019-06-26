@@ -2,20 +2,12 @@
 
 ## Introduction
 
-Let's review the following code examples on how to store and load private keys:
+Let's review the following code examples on how to create, mint, and burn tokens:
 
-* Creating tokens
-* Minting tokens
-* Burning tokens
-
-## Links
-
-| Link | Description |
-| :----- | :------ |
-| [radixdlt.com](https://radixdlt.com/) | Radix DLT Homepage |
-| [documentation](https://docs.radixdlt.com/) | Radix Knowledge Base |
-| [forum](https://forum.radixdlt.com/) | Radix Technical Forum |
-| [@radixdlt](https://twitter.com/radixdlt) | Follow Radix DLT on Twitter |
+* [Creating tokens](token-management.md#creating-tokens)
+* [Querying the ledger for token definitions](token-management.md#querying-the-ledger-for-token-definitions)
+* [Minting tokens](token-management.md#minting-tokens)
+* [Burning tokens](token-management.md#burning-tokens)
 
 ## Creating tokens
 
@@ -49,7 +41,6 @@ new RadixTransactionBuilder().createTokenSingleIssuance(
   complete: () => { console.log('Token defintion has been created') },
   error: error => { console.error('Error submitting transaction', error) }
 })
-
 ```
 
 After that you can observe the token in the accounts `tokenDefinitionSystem`
@@ -57,12 +48,12 @@ After that you can observe the token in the accounts `tokenDefinitionSystem`
 ```javascript
 const tokenReference = `/${myIdentity.account.getAddress()}/${symbol}`
 
-
 myIdentity.account.transferSystem.tokenUnitsBalance[RLAU_URI] // will be equal to amount
 myIdentity.account.tokenDefinitionSystem.getTokenDefinition(symbol) // will return token defintion
 ```
 
-### Querying the ledger for token definitons
+## Querying the ledger for token definitions
+
 It is possible to query the ledger for token information such as the total supply without manually managing the account using the `radixTokenManager`
 
 ```javascript
@@ -91,13 +82,11 @@ RadixTransactionBuilder.createMintAtom(myIdentity.account, tokenReference, amoun
   complete: () => { console.log('Tokens have been minted') },
   error: error => { console.error('Error submitting transaction', error) }
 })
-
 ```
 
 ## Burning tokens
 
-For multi-issuance tokens, it is possible to burn tokens after they have been created
-The account that owns the token definiton must also hold the tokens to be burned
+For multi-issuance tokens, it is possible to burn tokens after they have been created The account that owns the token definiton must also hold the tokens to be burned
 
 ```javascript
 const tokenReference = `/${myIdentity.account.getAddress()}/${symbol}`
@@ -111,7 +100,4 @@ RadixTransactionBuilder.createBurnAtom(myIdentity.account, tokenReference, amoun
   error: error => { console.error('Error submitting transaction', error) }
 })
 ```
-
-
-
 

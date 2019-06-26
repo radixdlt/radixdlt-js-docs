@@ -1,8 +1,6 @@
 # Table of contents
 
 * [JavaScript client library](README.md)
-* [GitHub project](https://github.com/radixdlt/radixdlt-js)
-* [Knowledge Base](https://docs.radixdlt.com/)
 
 ## Guides
 
@@ -13,13 +11,15 @@
 
 * [Code examples](examples/code-examples/README.md)
   * [General use](examples/code-examples/general-use.md)
-  * [Account management](examples/code-examples/manage-accounts.md)
-  * [Atom management](examples/code-examples/manage-atoms.md)
+  * [Account management](examples/code-examples/account-management.md)
+  * [Atom management](examples/code-examples/atom-management.md)
   * [Identity management](examples/code-examples/identity-management.md)
   * [Private key management](examples/code-examples/private-key-management.md)
   * [Token management](examples/code-examples/token-management.md)
   * [Transaction management](examples/code-examples/transaction-management.md)
 * [Demo applications](examples/demo-applications.md)
+* [GitHub project](https://github.com/radixdlt/radixdlt-js)
+* [Knowledge Base](https://docs.radixdlt.com/)
 
 ## Community
 

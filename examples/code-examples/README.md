@@ -8,11 +8,11 @@ These code examples are divided into several topics:
   * ​[Initializing a universe](general-use.md#initializing-a-universe)​
   * ​[Setting a log level](general-use.md#setting-a-log-level)​
 * **Manage accounts**
-  * ​[Creating a custom account system](manage-accounts.md#creating-a-custom-account-system)​
+  * ​[Creating a custom account system](account-management.md#creating-a-custom-account-system)​
 * **Manage atoms**
-  * ​[Reading atoms from a public address](manage-atoms.md#reading-atoms-from-a-public-address)​
-  * ​[Reading and decrypting atoms from an owned address](manage-atoms.md#reading-and-decrypting-atoms-from-an-owned-address)​
-  * ​[Caching atoms](manage-atoms.md#caching-atoms)​
+  * ​[Reading atoms from a public address](atom-management.md#reading-atoms-from-a-public-address)​
+  * ​[Reading and decrypting atoms from an owned address](atom-management.md#reading-and-decrypting-atoms-from-an-owned-address)​
+  * ​[Caching atoms](atom-management.md#caching-atoms)​
 * **Manage identities**
   * ​[Creating a remote identity](identity-management.md#creating-a-remote-identity)​
   * ​[Creating a simple identity](identity-management.md#creating-a-simple-identity)​
