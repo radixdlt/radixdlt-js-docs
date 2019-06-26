@@ -39,7 +39,7 @@ export default class CustomAccountSystem implements RadixAccountSystem {
 A **DELETE** can occur when an **Atom** fails to validate or is rejected by the consensus. It's crucial to handle it correctly in the particular context of the application.
 {% endhint %}
 
-Once you have your custom account system, you can simply add it to the account using the `addAccountSystem\(\)` method:
+Once you have your custom account system, you can simply add it to the account using the `addAccountSystem()` method:
 
 ```javascript
 const account = RadixAccount.fromAddress('JEaSfBftmFdseSRKfTm6hJNhQi3FAEqmVzAPTxsf55wPqXvBxRB')
