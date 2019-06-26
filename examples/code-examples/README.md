@@ -15,7 +15,12 @@ These code examples are divided into several topics:
   * ​[Caching atoms](atom-management.md#caching-atoms)​
 * **Manage identities**
   * ​[Creating a remote identity](identity-management.md#creating-a-remote-identity)​
-  * ​[Creating a simple identity](identity-management.md#creating-a-simple-identity)​
+  * ​[Creating a simple identity](identity-management.md#creating-a-simple-identity)
+* **Manage tokens**
+  * [Creating tokens](token-management.md#creating-tokens)
+  * [Querying the ledger for token definitions](token-management.md#querying-the-ledger-for-token-definitions)
+  * [Minting tokens](token-management.md#minting-tokens)
+  * [Burning tokens](token-management.md#burning-tokens)
 * **Manage transactions**
   * ​[Sending a transaction](transaction-management.md#sending-a-transaction)​
   * ​[Sending a message](transaction-management.md#sending-a-message)​
