@@ -1,14 +1,14 @@
 # Identity management
 
-## Introduction <a id="manage-identities"></a>
+## Introduction
 
 Let's review some code examples on how to manage **Identities**:
 
-* ​[Creating a remote identity](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#creating-a-remote-identity)​
-* ​[Creating a simple identity](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#creating-a-simple-identity)​
+* [Creating a simple identity](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#creating-a-remote-identity)
+* [Creating a remote identity](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#creating-a-simple-identity)
 
 {% hint style="success" %}
-**Tip:** using a _RemoteIdentity_ allows the JavaScript application to access an existing account that the user already has on a Wallet, while keeping the private keys secure.
+**Tip:** using a _RemoteIdentity_ allows the JavaScript application to use a user's existing private key in their Desktop Wallet application, without the user exposing their private key to your app.
 {% endhint %}
 
 ## Creating a simple identity
@@ -27,7 +27,8 @@ const myIdentity = identityManager.generateSimpleIdentity()
 With it, we can easily access our own Account using the `account` reference:
 
 ```javascript
-const myAccount = myIdentity.account​ ​ 
+const myAccount = myIdentity.account
+
 console.log('My account address: ', myAccount.getAddress())
 ```
 
@@ -71,7 +72,7 @@ As an alternative, we can also generate a _RemoteIdentity_ using `RadixIdentityM
 
 ```javascript
 const identityManager = new RadixIdentityManager()
-​
+
 identityManager.generateRemoteIdentity('my dApp', 'my dApp description').then(identity => {
     //Do stuff with identity here
 }).catch(error => {
