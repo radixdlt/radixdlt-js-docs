@@ -15,7 +15,7 @@ A JavaScript client library for interacting with a [Radix](https://www.radixdlt.
 {% endhint %}
 
 {% hint style="info" %}
-**Note:** this library and the network itself are currently in **Beta** development phase. Please report any issues in the [GitHub issue tracker](https://github.com/radixdlt/radixdlt-js/issues).
+**Note:** this library and the network itself are currently in **Alpha** development phase. Please report any issues in the [GitHub issue tracker](https://github.com/radixdlt/radixdlt-js/issues).
 {% endhint %}
 
 ## Features
@@ -79,8 +79,6 @@ node: { crypto: true, path: true }
 {% hint style="warning" %}
 **Note:** this is not a reproducible fix. If you install your modules in a new location, you will lose this change.
 {% endhint %}
-
-
 
 ## Join the Radix Community <a id="join-the-radix-community"></a>
 
