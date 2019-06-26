@@ -1,12 +1,5 @@
 # Token management
 
-[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/radixdlt/radixdlt-js/blob/master/LICENSE)
-[![Build Status](https://travis-ci.com/radixdlt/radixdlt-js.svg?branch=develop)](https://travis-ci.com/radixdlt/radixdlt-js)
-[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=radixdlt-js&metric=alert_status)](https://sonarcloud.io/dashboard?id=radixdlt-js) 
-[![Reliability](https://sonarcloud.io/api/project_badges/measure?project=radixdlt-js&metric=reliability_rating)](https://sonarcloud.io/component_measures?id=radixdlt-js&metric=reliability_rating)
-[![Security](https://sonarcloud.io/api/project_badges/measure?project=radixdlt-js&metric=security_rating)](https://sonarcloud.io/component_measures?id=radixdlt-js&metric=security_rating) 
-[![Code Corevage](https://sonarcloud.io/api/project_badges/measure?project=radixdlt-js&metric=coverage)](https://sonarcloud.io/component_measures?id=radixdlt-js&metric=Coverage)
-
 ## Introduction
 
 Let's review the following code examples on how to store and load private keys:
@@ -19,10 +12,10 @@ Let's review the following code examples on how to store and load private keys:
 
 | Link | Description |
 | :----- | :------ |
-[radixdlt.com](https://radixdlt.com/) | Radix DLT Homepage
-[documentation](https://docs.radixdlt.com/) | Radix Knowledge Base
-[forum](https://forum.radixdlt.com/) | Radix Technical Forum
-[@radixdlt](https://twitter.com/radixdlt) | Follow Radix DLT on Twitter
+| [radixdlt.com](https://radixdlt.com/) | Radix DLT Homepage |
+| [documentation](https://docs.radixdlt.com/) | Radix Knowledge Base |
+| [forum](https://forum.radixdlt.com/) | Radix Technical Forum |
+| [@radixdlt](https://twitter.com/radixdlt) | Follow Radix DLT on Twitter |
 
 ## Creating tokens
 
