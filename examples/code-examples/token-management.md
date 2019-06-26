@@ -13,7 +13,9 @@ Let's review the following code examples on how to create, mint, and burn tokens
 
 Tokens can be single or multi-issuance. Multi-issuance tokens can be minted after token creation, while single issuance tokens are limited to the amount specified in the token definition.
 
-A token is uniquely identified by its symbol and the account that owns it. It can be referred to with a unique URI in the form of `/address/symbol`. We call these URIs Radix Resource Identifiers or RRIs for short.
+{% hint style="info" %}
+**Note:** A token is uniquely identified by its symbol and the account that owns it. It can be referred to with a unique URI in the form of `/address/symbol`. We call these URIs Radix Resource Identifiers or RRIs for short.
+{% endhint %}
 
 Token amounts on the ledger are stored as integer values in subunits. All tokens have 10^18 subunits.
 

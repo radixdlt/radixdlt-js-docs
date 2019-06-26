@@ -4,8 +4,8 @@
 
 Let's review the following code examples on how to store and load private keys:
 
-* ​[Storing private keys](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#storing-private-keys)​
-* ​[Loading private keys](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#loading-private-keys)​
+* ​[Storing private keys](private-key-management.md#storing-private-keys)​
+* ​[Loading private keys](private-key-management.md#loading-private-keys)​
 
 ## Storing private keys
 

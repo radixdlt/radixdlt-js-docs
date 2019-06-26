@@ -4,7 +4,7 @@
 
 Let's review some code examples on how to manage **Accounts**:
 
-* [Creating a custom account system](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#creating-a-custom-account-system)
+* [Creating a custom account system](account-management.md#creating-a-custom-account-system)
 
 ## Creating a custom account system
 
@@ -15,13 +15,13 @@ import { RadixAccountSystem, RadixAtomUpdate, RadixAtom } from 'radixdlt'
 
 export default class CustomAccountSystem implements RadixAccountSystem {
   public name: 'CUSTOM'
-  
+
   public async processAtomUpdate(atomUpdate: RadixAtomUpdate) {
     const atom: RadixAtom = atomUpdate.atom
-    
+
     // This is either 'STORE' or 'DELETE'
     const action = atomUpdate.action
-    
+
     // Do whatever you want with your atom here
     console.log(atom.getAidString())
     if (action === 'STORE') {

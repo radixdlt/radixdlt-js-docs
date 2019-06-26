@@ -4,9 +4,9 @@
 
 Let's review some code examples on how to manage **Atoms**:
 
-* [Reading atoms from a public address](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#reading-atoms-from-a-public-address)
-* [Reading and decrypting atoms from an owned address](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#reading-and-decrypting-atoms-from-an-owned-address)
-* [Caching atoms](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#caching-atoms)
+* [Reading atoms from a public address](atom-management.md#reading-atoms-from-a-public-address)
+* [Reading and decrypting atoms from an owned address](atom-management.md#reading-and-decrypting-atoms-from-an-owned-address)
+* [Caching atoms](atom-management.md#caching-atoms)
 
 ## Reading atoms from a public address
 

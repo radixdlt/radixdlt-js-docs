@@ -4,9 +4,9 @@
 
 Let's review a few code examples related to `RadixTransactionBuilder`, and see how we can handle transactions, messages and payloads:
 
-* [Sending a transaction](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#sending-a-transaction)
-* [Sending a message](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#sending-a-message)
-* [Storing an application payload](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#storing-an-application-payload)
+* [Sending a transaction](transaction-management.md#sending-a-transaction)
+* [Sending a message](transaction-management.md#sending-a-message)
+* [Storing an application payload](transaction-management.md#storing-an-application-payload)
 
 ## Sending a transaction
 
@@ -27,7 +27,7 @@ const amount = 123.12
 const transactionStatus = RadixTransactionBuilder
   .createTransferAtom(myAccount, toAccount, token, amount)
   .signAndSubmit(myIdentity)
-                    
+
 transactionStatus.subscribe({
   next: status => {
     console.log(status) 
@@ -57,7 +57,7 @@ const message = 'Hello World!'
 const transactionStatus = RadixTransactionBuilder
   .createRadixMessageAtom(myAccount, toAccount, message)
   .signAndSubmit(myIdentity)
-                    
+
 transactionStatus.subscribe({
   next: status => {
     console.log(status) 
@@ -91,7 +91,7 @@ const payload = JSON.stringify({
 const transactionStatus = RadixTransactionBuilder
   .createPayloadAtom(myAccount, [toAccount], applicationId, payload)
   .signAndSubmit(myIdentity)
-                    
+
 transactionStatus.subscribe({
   next: status => {
     console.log(status) 

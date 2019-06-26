@@ -4,20 +4,20 @@
 
 Let's review some code examples on how to manage **Identities**:
 
-* [Creating a simple identity](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#creating-a-remote-identity)
-* [Creating a remote identity](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#creating-a-simple-identity)
+* [Creating a simple identity](identity-management.md#creating-a-simple-identity)
+* [Creating a remote identity](identity-management.md#creating-a-remote-identity)
 
 {% hint style="success" %}
-**Tip:** using a _RemoteIdentity_ allows the JavaScript application to use a user's existing private key in their Desktop Wallet application, without the user exposing their private key to your app.
+**Tip:** using a `RemoteIdentity` allows the JavaScript application to use a user's existing private key in their Desktop Wallet application, without the user exposing their private key to your app.
 {% endhint %}
 
 ## Creating a simple identity
 
 {% hint style="info" %}
-**Note:** a _SimpleIdentity_ keeps both public and private keys in memory.
+**Note:** a `SimpleIdentity` keeps both public and private keys in memory.
 {% endhint %}
 
-In the following code example, we create a new simple identity using the `RadixIdentityManager`'s generateSimpleIdentity\(\) method:
+In the following code example, we create a new simple identity using the _RadixIdentityManager_'s `generateSimpleIdentity()` method:
 
 ```javascript
 const identityManager = new RadixIdentityManager()
@@ -35,7 +35,7 @@ console.log('My account address: ', myAccount.getAddress())
 ## Creating a remote identity
 
 {% hint style="info" %}
-**Note:** a _RemoteIdentity_ only holds the public key in memory, while a Wallet keeps the private key. The user must accept a request from the JavaScript application to allow the Wallet to sign atoms on its behalf.
+**Note:** a `RemoteIdentity` only holds the public key in memory, while a Wallet keeps the private key. The user must accept a request from the JavaScript application to allow the Wallet to sign atoms on its behalf.
 {% endhint %}
 
 In the following code snippet, we try to create a new remote **Identity** and catch any errors in the console log:

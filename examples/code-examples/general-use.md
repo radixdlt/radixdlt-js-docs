@@ -4,10 +4,10 @@
 
 Let's review some code examples on how to handle generic tasks:
 
-* [Initializing a universe](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#initializing-a-universe)
-* [Setting a log level](https://docs.radixdlt.com/alpha/developer/javascript-client-library-guide/code-examples#setting-a-log-level)
+* [Initializing a Universe](general-use.md#initializing-a-universe)
+* [Setting a log level](general-use.md#setting-a-log-level)
 
-## Initializing a universe
+## Initializing a Universe
 
 There are different Universes available, such as `LOCAL`, `SUNSTONE`, and `BETANET`. Typically, for development purposes we use **BETANET**.
 
