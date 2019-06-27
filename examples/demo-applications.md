@@ -1,6 +1,6 @@
 # Demo applications
 
-## Radixdlt-js skeleton​ <a id="radixdlt-js-skeleton"></a>
+## Radixdlt-js skeleton <a id="radixdlt-js-skeleton"></a>
 
 This minimal sample App will showcase some of the things that can be done with the JavaScript client library.
 
@@ -10,7 +10,7 @@ This minimal sample App will showcase some of the things that can be done with t
 # install dependencies
 npm install
 
-​# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:8080
 npm run dev
 ```
 
@@ -32,9 +32,7 @@ npm run dev
 **Tip:** Check the [GitHub project](https://github.com/radixdlt/radixdlt-js-skeleton) page for further details.
 {% endhint %}
 
-## ​Radixdlt-js server​ <a id="radixdlt-js-server"></a>
-
-
+## Radixdlt-js server <a id="radixdlt-js-server"></a>
 
 This is an example server using Express.js
 
@@ -42,7 +40,7 @@ This is an example server using Express.js
 
 Install dependencies using `npm install` or `yarn install`
 
-Start the server by running `npm server` or `yarn serve`
+Start the server by running `npm serve` or `yarn serve`
 
 The default port is set to 3000
 
@@ -60,9 +58,9 @@ After running the server, you can:
 
 ## Join the Radix Community <a id="join-the-radix-community"></a>
 
-* ​[Telegram](https://t.me/radix_dlt) for general chat
-* ​[Discord](https://discord.gg/7Q7HSZZ) for developer chat
-* ​[Reddit](https://reddit.com/r/radix) for general discussion
-* ​[Twitter](https://twitter.com/radixdlt) for announcements
-* ​[Email newsletter](https://radixdlt.typeform.com/to/nyKvMV) for weekly updates
+* [Telegram](https://t.me/radix_dlt) for general chat
+* [Discord](https://discord.gg/7Q7HSZZ) for developer chat
+* [Reddit](https://reddit.com/r/radix) for general discussion
+* [Twitter](https://twitter.com/radixdlt) for announcements
+* [Email newsletter](https://radixdlt.typeform.com/to/nyKvMV) for weekly updates
 
