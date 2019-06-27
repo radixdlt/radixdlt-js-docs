@@ -6,10 +6,10 @@ During this tutorial, we will build a small distributed App \(dApp\). The techni
 
 This guide is divided into several sections:
 
-* **​**[**Basic Setup**](get-started.md#basic-setup) will give you a starting point to follow the tutorial.
-* **​**[**Overview**](get-started.md#overview) will teach you the fundamentals of Radix's architecture.
-* **​**[**Getting some Radix tokens**](get-started.md#getting-some-radix-test-tokens) will show you how to build your first basic dApp.
-* **​**[**Beyond the basics**](get-started.md#beyond-the-basics) will give you additional examples to get a deeper insight into the strengths of Radix JS library.
+* [**Basic Setup**](get-started.md#basic-setup) will give you a starting point to follow the tutorial.
+* [**Overview**](get-started.md#overview) will teach you the fundamentals of Radix's architecture.
+* [**Getting some Radix tokens**](get-started.md#getting-some-radix-test-tokens) will show you how to build your first basic dApp.
+* [**Beyond the basics**](get-started.md#beyond-the-basics) will give you additional examples to get a deeper insight into the strengths of Radix JS library.
 
 ### About our example dApp <a id="about-our-example-dapp"></a>
 
@@ -110,13 +110,12 @@ An **Address** lives in a **Shard** and is the start and end point for any **Ato
 Keep in mind, the defined **Universe** affects the generated **Address**.
 {% endhint %}
 
-
-
 When an **Account** is connected to the network, it will take any incoming **Atoms** and pass them through the account systems. The default systems are:
 
 * **Transfer System**, which keeps a list of transactions involving this account as well as the account balance for all the different tokens in the account
 * **Radix Messaging System**, which manages the different Radix messaging chats this account is involved in
 * **Data System** used for custom data stored on the ledger
+* **Token Definition System** used for managing user-defined tokens
 
 {% hint style="info" %}
 You can create your own custom **Account Systems** if you want access to the raw **Atoms**.
@@ -127,7 +126,7 @@ You can create your own custom **Account Systems** if you want access to the raw
 An **Identity** represents a private key which can sign **Atoms** and read encrypted data. This private key can be stored in the application, or in the future, it might live elsewhere such as the user's wallet application or hardware wallet.
 
 {% hint style="info" %}
-The only type of **Identity** currently available is the _**Simple Identity,**_ and it has a private key stored in memory.
+The most basic type of an **Identity** is a `SimpleIdentity`, which stores the private key in memory.
 {% endhint %}
 
 ### Transaction Builder <a id="transaction-builder"></a>
@@ -155,7 +154,7 @@ Now, to initialize the universe we have to import the `radixUniverse` singleton 
 ```javascript
 import {radixUniverse, RadixUniverse} from 'radixdlt'
 
-​​radixUniverse.bootstrap(RadixUniverse.ALPHANET)
+radixUniverse.bootstrap(RadixUniverse.ALPHANET)
 ```
 
 ### Creating our own Identity <a id="creating-our-own-identity"></a>
@@ -175,7 +174,7 @@ const myIdentity = identityManager.generateSimpleIdentity()
 With it, we can easily get our own [Account](get-started.md#account) using the _account_ reference:
 
 ```javascript
-const myAccount = myIdentity.account​​
+const myAccount = myIdentity.account
 
 console.log('My account address: ', myAccount.getAddress())
 ```
@@ -200,10 +199,10 @@ This call opens a connection to a [Node](get-started.md#nodes) from the _ALPHANE
 
 ### Getting the Faucet's account <a id="getting-the-faucets-account"></a>
 
-To get the [Faucet's](get-started.md#faucet-service) account, we resolve the address using the _fromAddress\(...\)_ method:
+To get the [Faucet's](get-started.md#faucet-service) account, we resolve the address using the `fromAddress(...)` method:
 
 ```javascript
-const faucetAddress = '9ey8A461d9hLUVXh7CgbYhfmqFzjzSBKHvPC8SMjccRDbkTs2aM'​​
+const faucetAddress = '9ey8A461d9hLUVXh7CgbYhfmqFzjzSBKHvPC8SMjccRDbkTs2aM'
 
 const faucetAccount = RadixAccount.fromAddress(faucetAddress, true)
 ```
@@ -223,8 +222,8 @@ For accounts that won't be connected to the network, since you won't need any ac
 Now that we have the Faucet's account and our own account connected to the network, we are ready to send a message and request some free tokens to the Faucet service. We send the message using RadixTransactionBuilder's _createRadixMessageAtom\(...\)_ method, and signing the result [Atom](get-started.md#atoms) with our [Identity](get-started.md#identity):
 
 ```javascript
-const message = 'Dear Faucet, may I please have some money? (◕ᴥ◕)'​
-​
+const message = 'Dear Faucet, may I please have some money?'
+
 RadixTransactionBuilder
   .createRadixMessageAtom(myAccount, faucetAccount, message)
   .signAndSubmit(myIdentity)
@@ -235,7 +234,7 @@ RadixTransactionBuilder
 After we send the message, we have to subscribe to the Balance subject from the Transfer system to know when we receive the free test tokens sent by the [Faucet](get-started.md#faucet-service) service:
 
 ```javascript
-myAccount.transferSystem.balanceSubject.subscribe(balance => {
+myAccount.transferSystem.getTokenUnitsBalanceUpdates().subscribe(balance => {
   // there's a balance update
   console.log(balance);
   // ...
@@ -243,27 +242,23 @@ myAccount.transferSystem.balanceSubject.subscribe(balance => {
 ```
 
 {% hint style="info" %}
-The `balance` includes the type of token, and the amount of tokens in subunits.
+The `balance` includes the type of token, and the amount of tokens in token units, which are stored in a Decimal.js object.
 {% endhint %}
 
 ### Handling tokens in Radix <a id="handling-tokens-in-radix"></a>
 
-As the balance can have different types of tokens, let's see now how we handle tokens in Radix using the _RadixTokenManager_. Since we are working with the free test tokens, first we get the specific RadixToken by calling the _getTokenbyISO\(...\)_ method from `RadixTokenManager`:
+As the balance can have different types of tokens, let's see how to find the token we are interested in.
+Since we are working with the native platform tokens, we can get a reference from the `radixUniverse` object:
 
 ```javascript
-const radixToken = radixTokenManager.getTokenByISO('TEST')
+const radixToken = radixUniverse.nativeToken
 ```
 
-We also noted that the balance is stored as token subunits \(integer values\), but we want to work with the balance as a regular floating point number, so we convert it using the _toTokenUnits\(...\)_ method from RadixToken:
+Then, we can find the balance of the token in the `balance` object returned in the balance update.:
 
 ```javascript
-// Convert balance from subunits to decimal point value
-const floatingPointBalance = radixToken.toTokenUnits(balance[radixToken.id.toString()])
+const nativeTokenBalance = balance[radixToken.toString()]
 ```
-
-{% hint style="info" %}
-**Note:** we convert token subunits to floating point on-demand to avoid inaccurate floating point calculations.
-{% endhint %}
 
 ### Sending Radix tokens <a id="sending-radix-tokens"></a>
 
@@ -290,33 +285,36 @@ RadixTransactionBuilder
 At this point, we have all the basic building blocks for our simple "Get Radix test tokens" dApp. Now, to have a real complete and functional dApp, we need to put the pieces together:
 
 ```javascript
-import {radixUniverse, RadixUniverse} from 'radixdlt'
-import {RadixIdentityManager, RadixAccount} from 'radixdlt'
-import {RadixTransactionBuilder, radixTokenManager} from 'radixdlt'
-​
-radixUniverse.bootstrap(RadixUniverse.ALPHANET)
-​
+import {radixUniverse,
+  RadixUniverse,
+  RadixIdentityManager,
+  RadixAccount,
+  RadixTransactionBuilder
+} from 'radixdlt'
+
+radixUniverse.bootstrap(RadixUniverse.BETANET)
+
 const identityManager = new RadixIdentityManager()
 const myIdentity = identityManager.generateSimpleIdentity()
 const myAccount = myIdentity.account
-​
+
 myAccount.openNodeConnection()
-​
+
 const faucetAddress = '9ey8A461d9hLUVXh7CgbYhfmqFzjzSBKHvPC8SMjccRDbkTs2aM'
 const faucetAccount = RadixAccount.fromAddress(faucetAddress, true)
-const message = 'Dear Faucet, may I please have some money? (◕ᴥ◕)'
-​
+const message = 'Dear Faucet, may I please have some money?'
+
 RadixTransactionBuilder
   .createRadixMessageAtom(myAccount, faucetAccount, message)
   .signAndSubmit(myIdentity)
   
   
-const radixToken = radixTokenManager.getTokenByISO('TEST')  
-myAccount.transferSystem.balanceSubject.subscribe(balance => {
-  // Convert balance from subunits to decimal point value
-  const floatingPointBalance = radixToken.toTokenUnits(balance[radixToken.id.toString()])
+const radixToken = radixUniverse.nativeToken  
+myAccount.transferSystem.getTokenUnitsBalanceUpdates().subscribe(balance => {
+  // Get the balance for the token we are interested in
+  const nativeTokenBalance = balance[radixToken.toString()]
   // do we have at least 5 tokens?
-  if (floatingPointBalance > 5) {
+  if (nativeTokenBalance.greaterThan(5)) {
   
     // Put your friends' address here
     const toAddress = '9i9hgAyBQuKvkw7Tg5FEbML59gDmtiwbJwAjBgq5mAU4iaA1ykM'
@@ -346,22 +344,22 @@ As we reach the end of our dApp example, we want to share some extra code snippe
 
 ### Example applications <a id="example-applications"></a>
 
-* ​[Front-end example using Vue.js](https://github.com/radixdlt/radixdlt-js-skeleton)​
-* ​[Express.js server example](https://github.com/radixdlt/radixdlt-js-server-example)​
+* [Front-end example using Vue.js](https://github.com/radixdlt/radixdlt-js-skeleton)
+* [Express.js server example](https://github.com/radixdlt/radixdlt-js-server-example)
 
 ### Code examples <a id="code-examples"></a>
 
-* [Manage accounts​](../examples/code-examples/account-management.md)
-* [Manage atoms​](../examples/code-examples/atom-management.md)
+* [Manage accounts](../examples/code-examples/account-management.md)
+* [Manage atoms](../examples/code-examples/atom-management.md)
 * [Manage identities](../examples/code-examples/identity-management.md)
-* ​[Manage transactions​](../examples/code-examples/transaction-management.md)
-* ​[Manage private keys​](../examples/code-examples/private-key-management.md)
+* [Manage transactions](../examples/code-examples/transaction-management.md)
+* [Manage private keys](../examples/code-examples/private-key-management.md)
 
 ### Join the Radix Community
 
-* ​[Telegram](https://t.me/radix_dlt) for general chat
-* ​[Discord](https://discord.gg/7Q7HSZZ) for developer chat
-* ​[Reddit](https://reddit.com/r/radix) for general discussion
-* ​[Twitter](https://twitter.com/radixdlt) for announcements
-* ​[Email newsletter](https://radixdlt.typeform.com/to/nyKvMV) for weekly updates
+* [Telegram](https://t.me/radix_dlt) for general chat
+* [Discord](https://discord.gg/7Q7HSZZ) for developer chat
+* [Reddit](https://reddit.com/r/radix) for general discussion
+* [Twitter](https://twitter.com/radixdlt) for announcements
+* [Email newsletter](https://radixdlt.typeform.com/to/nyKvMV) for weekly updates
 
