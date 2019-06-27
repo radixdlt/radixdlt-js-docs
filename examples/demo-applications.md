@@ -1,10 +1,10 @@
 # Demo applications
 
-## Radixdlt-js skeleton <a id="radixdlt-js-skeleton"></a>
+## Radixdlt-js skeleton  <a id="radixdlt-js-skeleton"></a>
 
 This minimal sample App will showcase some of the things that can be done with the JavaScript client library.
 
-### Build Setup <a id="build-setup"></a>
+### Build Setup  <a id="build-setup"></a>
 
 ```bash
 # install dependencies
@@ -15,10 +15,10 @@ npm run dev
 ```
 
 {% hint style="success" %}
-#### Check the live version [here](https://radixdlt.github.io/radixdlt-js-skeleton). <a id="check-the-live-version-here"></a>
+#### Check the live version [here](https://radixdlt.github.io/radixdlt-js-skeleton).  <a id="check-the-live-version-here"></a>
 {% endhint %}
 
-### Updating the live version <a id="how-to-update-the-live-version"></a>
+### Updating the live version  <a id="how-to-update-the-live-version"></a>
 
 1. Run `npm run build` to generate the production files under the `dist` folder.
 2. Re-name it to `docs`.
@@ -32,11 +32,11 @@ npm run dev
 **Tip:** Check the [GitHub project](https://github.com/radixdlt/radixdlt-js-skeleton) page for further details.
 {% endhint %}
 
-## Radixdlt-js server <a id="radixdlt-js-server"></a>
+## Radixdlt-js server  <a id="radixdlt-js-server"></a>
 
 This is an example server using Express.js
 
-### Setup <a id="setup"></a>
+### Setup  <a id="setup"></a>
 
 Install dependencies using `npm install` or `yarn install`
 
@@ -56,7 +56,7 @@ After running the server, you can:
 **Tip:** check the [GitHub project](https://github.com/radixdlt/radixdlt-js-server-example) page for further details.
 {% endhint %}
 
-## Join the Radix Community <a id="join-the-radix-community"></a>
+## Join the Radix Community  <a id="join-the-radix-community"></a>
 
 * [Telegram](https://t.me/radix_dlt) for general chat
 * [Discord](https://discord.gg/7Q7HSZZ) for developer chat

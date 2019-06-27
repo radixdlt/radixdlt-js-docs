@@ -1,6 +1,6 @@
 # Getting started
 
-## Introduction <a id="introduction"></a>
+## Introduction  <a id="introduction"></a>
 
 During this tutorial, we will build a small distributed App \(dApp\). The techniques you’ll learn in this guide are fundamental to building any dApp on [Radix](http://www.radixdlt.com/), and mastering it will give you a better understanding of Radix distributed ledger.
 
@@ -11,21 +11,21 @@ This guide is divided into several sections:
 * [**Getting some Radix tokens**](get-started.md#getting-some-radix-test-tokens) will show you how to build your first basic dApp.
 * [**Beyond the basics**](get-started.md#beyond-the-basics) will give you additional examples to get a deeper insight into the strengths of Radix JS library.
 
-### About our example dApp <a id="about-our-example-dapp"></a>
+### About our example dApp  <a id="about-our-example-dapp"></a>
 
 Our example dApp for this guide will get some free test money from Radix, and once it has enough money, our dApp will send some to a different address. With our small dApp you'll learn how to interact with accounts, send transactions across the network and handle test tokens in an easy way.
 
 Don't worry if you're new to Radix's concepts, as we will review the basic building blocks along the way.
 
-## Basic setup <a id="basic-setup"></a>
+## Basic setup  <a id="basic-setup"></a>
 
 Our next step is to set you up so that you can start building your first dApp with Radix.
 
-### Prepare your environment <a id="prepare-your-environment"></a>
+### Prepare your environment  <a id="prepare-your-environment"></a>
 
 Before we can begin, make sure you have a recent version of [Node.js](https://nodejs.org/) installed in your system. We'll also need a minimalistic Node.js boilerplate project so we can properly build and run our dApp. If you're experienced building your own Node.js applications, feel free to skip our next step and continue with the library [installation](get-started.md#installation).
 
-#### Setting up a simple Node.js project <a id="setting-up-a-simple-node-js-project"></a>
+#### Setting up a simple Node.js project  <a id="setting-up-a-simple-node-js-project"></a>
 
 To prepare the environment, let's now set up a minimalistic Node.js project, by cloning an open source [Webpack ES6 boilerplate](https://www.npmjs.com/package/webpack-es6-boilerplate):
 
@@ -42,17 +42,17 @@ npm install
 
 As an optional step, you can start the server using `npm start` and open [http://localhost:9000](http://localhost:9000/) on your browser to see if everything was set up correctly.
 
-### Installation <a id="installation"></a>
+### Installation  <a id="installation"></a>
 
 You can install the **`radixdlt`** library in your Node.js project using your preferred package manager:
 
-#### Npm <a id="npm"></a>
+#### Npm  <a id="npm"></a>
 
 ```bash
 npm install radixdlt --save
 ```
 
-#### Yarn <a id="yarn"></a>
+#### Yarn  <a id="yarn"></a>
 
 ```bash
 yarn add radixdlt
@@ -62,7 +62,7 @@ yarn add radixdlt
 **Note:** the library provides full TypeScript support
 {% endhint %}
 
-### Recommendations <a id="recommendations"></a>
+### Recommendations  <a id="recommendations"></a>
 
 For this guide, we will assume that you have some familiarity with JavaScript, but you should be able to follow along even if you’re coming from a different programming language.
 
@@ -76,33 +76,33 @@ We’ll also assume that you’re familiar with programming concepts like functi
 If you need a quick review on Reactive programming, we recommend reading [our blog post](https://www.radixdlt.com/post/reactive-programming-and-rxjs).
 {% endhint %}
 
-## Overview <a id="overview"></a>
+## Overview  <a id="overview"></a>
 
 Now that you’re set up, let’s dig a bit on the concepts that make Radix a unique distributed ledger technology, so we can share a common language.
 
-### Universe <a id="universe"></a>
+### Universe  <a id="universe"></a>
 
 A **Universe** represents the Radix network. It maintains connections to **Nodes**, and you can ask it to give you a connection to a node that serves a specific **Shard**.
 
 Because Radix is built to be sharded from the ground up, it is not enough to have a single connection to the network - depending on what addresses you’re trying to work with, you might need a number of connections.
 
-### Shards <a id="shards"></a>
+### Shards  <a id="shards"></a>
 
 A **Shard** is simply a segment of a Universe. A public Radix network \(Universe\) is segmented into a very large shard space \(currently 2^64 shards\). The shard number of an address is deterministically calculated, so it's trivial for anyone to correctly calculate the shard a public key lives on.
 
-### Nodes <a id="nodes"></a>
+### Nodes  <a id="nodes"></a>
 
 A **Node** provides general computing and networking resources to the network. Nodes are responsible for validating events and transactions, relaying messages, resolving conflicts and executing scripts on the network. They also maintain a subset of the shard space and get fees in proportion to their work.
 
-### Atoms <a id="atoms"></a>
+### Atoms  <a id="atoms"></a>
 
 An **Atom** is the fundamental unit of storage on Radix's distributed ledger. Its structure defines one or more actions which update the ledger's state as an atomic transaction, that is, all-or-nothing.
 
-### Account <a id="account"></a>
+### Account  <a id="account"></a>
 
 An **Account** represents all the data stored for a user on the ledger. This includes tokens, but also arbitrary data, as well as more advanced types of transactions in the future such as multi-sig and Scrypto smart contracts.
 
-### Address <a id="address"></a>
+### Address  <a id="address"></a>
 
 An **Address** lives in a **Shard** and is the start and end point for any **Atom** in the Radix Universe. It's also a reference to an **Account** and allows a user to receive tokens and/or data from other users. A Radix address is generated from a public key and a **Universe** checksum.
 
@@ -121,7 +121,7 @@ When an **Account** is connected to the network, it will take any incoming **Ato
 You can create your own custom **Account Systems** if you want access to the raw **Atoms**.
 {% endhint %}
 
-### Identity <a id="identity"></a>
+### Identity  <a id="identity"></a>
 
 An **Identity** represents a private key which can sign **Atoms** and read encrypted data. This private key can be stored in the application, or in the future, it might live elsewhere such as the user's wallet application or hardware wallet.
 
@@ -129,7 +129,7 @@ An **Identity** represents a private key which can sign **Atoms** and read encry
 The most basic type of an **Identity** is a `SimpleIdentity`, which stores the private key in memory.
 {% endhint %}
 
-### Transaction Builder <a id="transaction-builder"></a>
+### Transaction Builder  <a id="transaction-builder"></a>
 
 The **Transaction Builder** handles creating and submitting to the network any kind of **Atoms** that the Radix ledger can accept. Right now this means _token transfer_ atoms, _data payload_ atoms and _Radix messaging_ atoms \(which are just a particular case of the data payload atoms\). In the future, the atom model will be a lot more powerful.
 
@@ -141,23 +141,23 @@ The **Faucet** service is a simple development service running on the Radix netw
 In the **ALPHANET** Universe, the **Faucet** service address is `9ey8A461d9hLUVXh7CgbYhfmqFzjzSBKHvPC8SMjccRDbkTs2aM`
 {% endhint %}
 
-## Getting some Radix test tokens <a id="getting-some-radix-test-tokens"></a>
+## Getting some Radix test tokens  <a id="getting-some-radix-test-tokens"></a>
 
 Now that we have done a brief overview of the concepts behind Radix and we share a common language, we are ready to begin building our example dApp and get some _**Radix test tokens**_ along the way.
 
-### Initializing the Universe <a id="initializing-the-universe"></a>
+### Initializing the Universe  <a id="initializing-the-universe"></a>
 
-The first step, before we can interact with the ledger, is to choose which [Universe](get-started.md#universe) we want to connect to. We will use the **ALPHANET** universe configuration since it's our main testing environment, and the other development universes are used for testing unstable features.
+The first step, before we can interact with the ledger, is to choose which [Universe](get-started.md#universe) we want to connect to. We will use the **BETANET** universe configuration since it's our main testing environment, and the other development universes are used for testing unstable features.
 
-Now, to initialize the universe we have to import the `radixUniverse` singleton from the library, and call the bootstrap function with the _ALPHANET_ universe configuration:
+Now, to initialize the universe we have to import the `radixUniverse` singleton from the library, and call the bootstrap function with the `BETANET` universe configuration:
 
 ```javascript
 import {radixUniverse, RadixUniverse} from 'radixdlt'
 
-radixUniverse.bootstrap(RadixUniverse.ALPHANET)
+radixUniverse.bootstrap(RadixUniverse.BETANET)
 ```
 
-### Creating our own Identity <a id="creating-our-own-identity"></a>
+### Creating our own Identity  <a id="creating-our-own-identity"></a>
 
 As we want to interact with the ledger and be able to sign and decrypt atoms, we'll need to have our own [Identity](get-started.md#identity). To create a new random identity, we use the `RadixIdentityManager`:
 
@@ -183,7 +183,7 @@ console.log('My account address: ', myAccount.getAddress())
 Each [Identity](get-started.md#identity) automatically comes with a corresponding [Account](get-started.md#account).
 {% endhint %}
 
-### Opening the connection <a id="opening-the-connection"></a>
+### Opening the connection  <a id="opening-the-connection"></a>
 
 Now that we have our account, the next step is connect it to the network. We do it by calling the _openNodeConnection\(\)_ method:
 
@@ -191,13 +191,13 @@ Now that we have our account, the next step is connect it to the network. We do 
 myAccount.openNodeConnection()
 ```
 
-This call opens a connection to a [Node](get-started.md#nodes) from the _ALPHANET_ universe which serves the shard where our account lives on, and asks the node for all the atoms in the address. It will also maintain a connection to the network until we destroy the account.
+This call opens a connection to a [Node](get-started.md#nodes) from the `BETANET` universe which serves the shard where our account lives on, and asks the node for all the atoms in the address. It will also maintain a connection to the network until we destroy the account.
 
 {% hint style="success" %}
 **Tip:** if a connection to a node dies, a new one will be found automatically.
 {% endhint %}
 
-### Getting the Faucet's account <a id="getting-the-faucets-account"></a>
+### Getting the Faucet's account  <a id="getting-the-faucets-account"></a>
 
 To get the [Faucet's](get-started.md#faucet-service) account, we resolve the address using the `fromAddress(...)` method:
 
@@ -217,7 +217,7 @@ For accounts that won't be connected to the network, since you won't need any ac
 **Note:** the library will throw an error if you accidentally try to use an address from a different **Universe**.
 {% endhint %}
 
-### Sending a message to the Faucet <a id="sending-a-message-to-the-faucet"></a>
+### Sending a message to the Faucet  <a id="sending-a-message-to-the-faucet"></a>
 
 Now that we have the Faucet's account and our own account connected to the network, we are ready to send a message and request some free tokens to the Faucet service. We send the message using RadixTransactionBuilder's _createRadixMessageAtom\(...\)_ method, and signing the result [Atom](get-started.md#atoms) with our [Identity](get-started.md#identity):
 
@@ -229,7 +229,7 @@ RadixTransactionBuilder
   .signAndSubmit(myIdentity)
 ```
 
-### Subscribing to balance updates <a id="subscribing-to-balance-updates"></a>
+### Subscribing to balance updates  <a id="subscribing-to-balance-updates"></a>
 
 After we send the message, we have to subscribe to the Balance subject from the Transfer system to know when we receive the free test tokens sent by the [Faucet](get-started.md#faucet-service) service:
 
@@ -245,10 +245,9 @@ myAccount.transferSystem.getTokenUnitsBalanceUpdates().subscribe(balance => {
 The `balance` includes the type of token, and the amount of tokens in token units, which are stored in a Decimal.js object.
 {% endhint %}
 
-### Handling tokens in Radix <a id="handling-tokens-in-radix"></a>
+### Handling tokens in Radix  <a id="handling-tokens-in-radix"></a>
 
-As the balance can have different types of tokens, let's see how to find the token we are interested in.
-Since we are working with the native platform tokens, we can get a reference from the `radixUniverse` object:
+As the balance can have different types of tokens, let's see how to find the token we are interested in. Since we are working with the native platform tokens, we can get a reference from the `radixUniverse` object:
 
 ```javascript
 const radixToken = radixUniverse.nativeToken
@@ -260,7 +259,7 @@ Then, we can find the balance of the token in the `balance` object returned in t
 const nativeTokenBalance = balance[radixToken.toString()]
 ```
 
-### Sending Radix tokens <a id="sending-radix-tokens"></a>
+### Sending Radix tokens  <a id="sending-radix-tokens"></a>
 
 Our last step is to send some of the free test tokens that we've got from the Faucet, to another address on the network. To do it, first we get the account from the destination address, just as we did before for the Faucet service:
 
@@ -280,7 +279,7 @@ RadixTransactionBuilder
   .signAndSubmit(myIdentity)
 ```
 
-### The complete dApp <a id="the-complete-dapp"></a>
+### The complete dApp  <a id="the-complete-dapp"></a>
 
 At this point, we have all the basic building blocks for our simple "Get Radix test tokens" dApp. Now, to have a real complete and functional dApp, we need to put the pieces together:
 
@@ -307,19 +306,19 @@ const message = 'Dear Faucet, may I please have some money?'
 RadixTransactionBuilder
   .createRadixMessageAtom(myAccount, faucetAccount, message)
   .signAndSubmit(myIdentity)
-  
-  
+
+
 const radixToken = radixUniverse.nativeToken  
 myAccount.transferSystem.getTokenUnitsBalanceUpdates().subscribe(balance => {
   // Get the balance for the token we are interested in
   const nativeTokenBalance = balance[radixToken.toString()]
   // do we have at least 5 tokens?
   if (nativeTokenBalance.greaterThan(5)) {
-  
+
     // Put your friends' address here
     const toAddress = '9i9hgAyBQuKvkw7Tg5FEbML59gDmtiwbJwAjBgq5mAU4iaA1ykM'
     const toAccount = RadixAccount.fromAddress(toAddress, true)
-    
+
     // Send 5 tokens to the address
     RadixTransactionBuilder
       .createTransferAtom(myAccount, toAccount, radixToken, 5)
@@ -338,16 +337,16 @@ To run the dApp, use `npm start`, and point your browser to [http://127.0.0.1:90
 
 ![](https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-LMPbV3hGbTEzGtYlH-m%2F-LPeLHn0knYfHDq1cHWh%2F-LPePT4SoHkB1ViOip-V%2FScreenshot%202018-10-24%2013.52.26.png?alt=media&token=80810e01-45be-4644-823d-8cbe5abaa1d6)
 
-## Beyond the basics <a id="beyond-the-basics"></a>
+## Beyond the basics  <a id="beyond-the-basics"></a>
 
 As we reach the end of our dApp example, we want to share some extra code snippets for those who want to go beyond the basics and showcase a few additional things that you can do with our library.
 
-### Example applications <a id="example-applications"></a>
+### Example applications  <a id="example-applications"></a>
 
 * [Front-end example using Vue.js](https://github.com/radixdlt/radixdlt-js-skeleton)
 * [Express.js server example](https://github.com/radixdlt/radixdlt-js-server-example)
 
-### Code examples <a id="code-examples"></a>
+### Code examples  <a id="code-examples"></a>
 
 * [Manage accounts](../examples/code-examples/account-management.md)
 * [Manage atoms](../examples/code-examples/atom-management.md)
