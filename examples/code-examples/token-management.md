@@ -19,14 +19,14 @@ Tokens can be single or multi-issuance. Multi-issuance tokens can be minted afte
 
 Token amounts on the ledger are stored as integer values in subunits. All tokens have 10^18 subunits.
 
-Granularity defines the minimum increment of tokens that can be transacted, in subunits. For example, if we set granularity to 10^18, then 1 or 2 are valid token amounts, but, 1.5 is not.
+Granularity defines the minimum increment of tokens that can be transacted. For example, if we set granularity to 0.1, then 1.0 or 1.2 are valid token amounts but 1.25 is not.
 
 ```javascript
 const symbol = 'EXMP'
 const name = 'Example Coin'
 const description = 'My example coin'
-const granularity = new BN(1) // In subunits
-const amount = 1000 // In token units
+const granularity = 1
+const amount = 1000
 const iconUrl = 'http://a.b.com/icon.png'
 
 new RadixTransactionBuilder().createTokenSingleIssuance(
