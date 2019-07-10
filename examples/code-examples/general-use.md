@@ -9,12 +9,19 @@ Let's review some code examples on how to handle generic tasks:
 
 ## Initializing a Universe
 
-There are different Universes available, such as `LOCAL`, `SUNSTONE`, and `BETANET`. Typically, for development purposes we use **BETANET**.
+There are different Universes available, such as `LOCAL`, `SUNSTONE`, and `BETANET`. Typically, for development purposes we use **LOCALHOST\_SINGLENODE**.
+
+### Available networks
+
+| Network | Description |
+| :--- | :--- |
+| `LOCALHOST_SINGLENODE` | A locally hosted single node connection. |
+| `BETANET_SINGLENODE` | A single node Betanet connection. |
 
 To bootstrap to a network we call:
 
 ```javascript
-radixUniverse.bootstrap(RadixUniverse.BETANET)
+radixUniverse.bootstrap(RadixUniverse.LOCALHOST_SINGLENODE)
 ```
 
 ## Setting a log level
