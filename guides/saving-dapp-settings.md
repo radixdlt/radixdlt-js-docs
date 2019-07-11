@@ -88,7 +88,7 @@ To wrap up this tutorial, we bring the [saving](saving-dapp-settings.md#saving) 
 import {radixUniverse, RadixUniverse} from 'radixdlt'
 import {RadixIdentityManager, RadixTransactionBuilder} from 'radixdlt'
 ​
-radixUniverse.bootstrap(RadixUniverse.BETANET)
+radixUniverse.bootstrap(RadixUniverse.LOCALHOST_SINGLENODE)
 ​
 const identityManager = new RadixIdentityManager()
 const appIdentity = identityManager.generateSimpleIdentity()

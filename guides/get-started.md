@@ -138,7 +138,7 @@ The **Transaction Builder** handles creating and submitting to the network any k
 The **Faucet** service is a simple development service running on the Radix network that sends free test tokens back to any account that sends a message to it.
 
 {% hint style="info" %}
-In the **ALPHANET** Universe, the **Faucet** service address is `9ey8A461d9hLUVXh7CgbYhfmqFzjzSBKHvPC8SMjccRDbkTs2aM`
+In the **BETANET** Universe, the **Faucet** service address is `9ey8A461d9hLUVXh7CgbYhfmqFzjzSBKHvPC8SMjccRDbkTs2aM`
 {% endhint %}
 
 ## Getting some Radix test tokens  <a id="getting-some-radix-test-tokens"></a>
@@ -147,14 +147,14 @@ Now that we have done a brief overview of the concepts behind Radix and we share
 
 ### Initializing the Universe  <a id="initializing-the-universe"></a>
 
-The first step, before we can interact with the ledger, is to choose which [Universe](get-started.md#universe) we want to connect to. We will use the **BETANET** universe configuration since it's our main testing environment, and the other development universes are used for testing unstable features.
+The first step, before we can interact with the ledger, is to choose which [Universe](get-started.md#universe) we want to connect to. We will use the **LOCALHOST\_SINGLENODE** universe configuration since it's our main testing environment, and the other development universes are used for testing unstable features.
 
-Now, to initialize the universe we have to import the `radixUniverse` singleton from the library, and call the bootstrap function with the `BETANET` universe configuration:
+Now, to initialize the universe we have to import the `radixUniverse` singleton from the library, and call the bootstrap function with the `LOCALHOST_SINGLENODE` universe configuration:
 
 ```javascript
 import {radixUniverse, RadixUniverse} from 'radixdlt'
 
-radixUniverse.bootstrap(RadixUniverse.BETANET)
+radixUniverse.bootstrap(RadixUniverse.LOCALHOST_SINGLENODE)
 ```
 
 ### Creating our own Identity  <a id="creating-our-own-identity"></a>
@@ -291,7 +291,7 @@ import {radixUniverse,
   RadixTransactionBuilder
 } from 'radixdlt'
 
-radixUniverse.bootstrap(RadixUniverse.BETANET)
+radixUniverse.bootstrap(RadixUniverse.LOCALHOST_SINGLENODE)
 
 const identityManager = new RadixIdentityManager()
 const myIdentity = identityManager.generateSimpleIdentity()
