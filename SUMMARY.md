@@ -1,6 +1,7 @@
 # Table of contents
 
 * [JavaScript client library](README.md)
+* [API reference](https://radixdlt.github.io/library-api-docs/radixdlt-js/2.0.0-beta.1)
 * [Knowledge Base](https://docs.radixdlt.com/kb/)
 * [GitHub project](https://github.com/radixdlt/radixdlt-js)
 
