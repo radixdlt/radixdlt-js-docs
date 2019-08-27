@@ -138,7 +138,7 @@ The **Transaction Builder** handles creating and submitting to the network any k
 The **Faucet** service is a simple development service running on the Radix network that sends free test tokens back to any account that sends a message to it.
 
 {% hint style="info" %}
-In the **BETANET** Universe, the **Faucet** service address is `9ey8A461d9hLUVXh7CgbYhfmqFzjzSBKHvPC8SMjccRDbkTs2aM`
+In the **BETANET** Universe, the **Faucet** service address is `JH1P8f3znbyrDj8F4RWpix7hRkgxqHjdW2fNnKpR3v6ufXnknor`
 {% endhint %}
 
 ## Getting some Radix test tokens  <a id="getting-some-radix-test-tokens"></a>
@@ -202,7 +202,7 @@ This call opens a connection to a [Node](get-started.md#nodes) from the `BETANET
 To get the [Faucet's](get-started.md#faucet-service) account, we resolve the address using the `fromAddress(...)` method:
 
 ```javascript
-const faucetAddress = '9ey8A461d9hLUVXh7CgbYhfmqFzjzSBKHvPC8SMjccRDbkTs2aM'
+const faucetAddress = 'JH1P8f3znbyrDj8F4RWpix7hRkgxqHjdW2fNnKpR3v6ufXnknor'
 
 const faucetAccount = RadixAccount.fromAddress(faucetAddress, true)
 ```
@@ -299,7 +299,7 @@ const myAccount = myIdentity.account
 
 myAccount.openNodeConnection()
 
-const faucetAddress = '9ey8A461d9hLUVXh7CgbYhfmqFzjzSBKHvPC8SMjccRDbkTs2aM'
+const faucetAddress = 'JH1P8f3znbyrDj8F4RWpix7hRkgxqHjdW2fNnKpR3v6ufXnknor'
 const faucetAccount = RadixAccount.fromAddress(faucetAddress, true)
 const message = 'Dear Faucet, may I please have some money?'
 
@@ -341,18 +341,13 @@ To run the dApp, use `npm start`, and point your browser to [http://127.0.0.1:90
 
 As we reach the end of our dApp example, we want to share some extra code snippets for those who want to go beyond the basics and showcase a few additional things that you can do with our library.
 
-### Example applications  <a id="example-applications"></a>
-
-* [Front-end example using Vue.js](https://github.com/radixdlt/radixdlt-js-skeleton)
-* [Express.js server example](https://github.com/radixdlt/radixdlt-js-server-example)
-
 ### Code examples  <a id="code-examples"></a>
 
-* [Manage accounts](../examples/code-examples/account-management.md)
-* [Manage atoms](../examples/code-examples/atom-management.md)
-* [Manage identities](../examples/code-examples/identity-management.md)
-* [Manage transactions](../examples/code-examples/transaction-management.md)
-* [Manage private keys](../examples/code-examples/private-key-management.md)
+* [Account management](../examples/code-examples/account-management.md)
+* [Atom management](../examples/code-examples/atom-management.md)
+* [Identity management](../examples/code-examples/identity-management.md)
+* [Transaction management](../examples/code-examples/transaction-management.md)
+* [Private key management](../examples/code-examples/private-key-management.md)
 
 ### Join the Radix Community
 
