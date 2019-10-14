@@ -1,37 +1,5 @@
 # Demo applications
 
-## Radixdlt-js skeleton  <a id="radixdlt-js-skeleton"></a>
-
-This minimal sample App will showcase some of the things that can be done with the JavaScript client library.
-
-### Build Setup  <a id="build-setup"></a>
-
-```bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-```
-
-{% hint style="success" %}
-#### Check the live version [here](https://radixdlt.github.io/radixdlt-js-skeleton).  <a id="check-the-live-version-here"></a>
-{% endhint %}
-
-### Updating the live version  <a id="how-to-update-the-live-version"></a>
-
-1. Run `npm run build` to generate the production files under the `dist` folder.
-2. Re-name it to `docs`.
-3. Update the repo.
-
-{% hint style="info" %}
-**Note:** it may take a few minutes to update.
-{% endhint %}
-
-{% hint style="success" %}
-**Tip:** Check the [GitHub project](https://github.com/radixdlt/radixdlt-js-skeleton) page for further details.
-{% endhint %}
-
 ## Radixdlt-js server  <a id="radixdlt-js-server"></a>
 
 This is an example server using Express.js
@@ -44,7 +12,9 @@ Start the server by running `npm serve` or `yarn serve`
 
 The default port is set to 3000
 
-The server will generate a new address on each startup.
+{% hint style="info" %}
+**Note:** the server will generate a new address on each startup.
+{% endhint %}
 
 After running the server, you can:
 

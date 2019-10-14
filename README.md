@@ -41,8 +41,7 @@ yarn add radixdlt
 
 ## Example applications
 
-* ​[Front-end example using Vue.js](https://github.com/radixdlt/radixdlt-js-skeleton)​
-* ​[Express.js server example](https://github.com/radixdlt/radixdlt-js-server-example)​
+* ​​[Express.js server example](https://github.com/radixdlt/radixdlt-js-server-example)​
 
 ## Build
 
