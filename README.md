@@ -12,10 +12,6 @@ description: >-
 
 A JavaScript client library for interacting with a [Radix](https://www.radixdlt.com/) Distributed Ledger.
 
-{% hint style="success" %}
-**Tip:** for an overview of the main components of the library and how they fit together, read this [blog post](https://www.radixdlt.com/post/introducing-the-radix-javascript-library).
-{% endhint %}
-
 {% hint style="info" %}
 **Note:** this library and the network itself are currently in **Beta** development phase. Please report any issues in the [GitHub issue tracker](https://github.com/radixdlt/radixdlt-js/issues).
 {% endhint %}
