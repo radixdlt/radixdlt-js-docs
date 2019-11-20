@@ -27,20 +27,20 @@ Before we can begin, make sure you have a recent version of [Node.js](https://no
 
 #### Setting up a simple Node.js project  <a id="setting-up-a-simple-node-js-project"></a>
 
-To prepare the environment, let's now set up a minimalistic Node.js project, by cloning an open source [Webpack ES6 boilerplate](https://www.npmjs.com/package/webpack-es6-boilerplate):
+To prepare the environment, let's now set up a minimalistic Node.js project, by cloning an open source [Webpack boilerplate](https://github.com/taniarascia/webpack-boilerplate):
 
 ```bash
-git clone https://github.com/jluccisano/webpack-es6-boilerplate.git
+git clone https://github.com/taniarascia/webpack-boilerplate.git
 ```
 
 Once we have cloned the boilerplate project, we can go ahead and install the required libraries for it:
 
 ```bash
-cd webpack-es6-boilerplate/
+cd webpack-boilerplate/
 npm install
 ```
 
-As an optional step, you can start the server using `npm start` and open [http://localhost:9000](http://localhost:9000/) on your browser to see if everything was set up correctly.
+As an optional step, you can start the server using `npm start` and open [http://localhost:8080](http://localhost:8080/) on your browser to see if everything was set up correctly.
 
 ### Installation  <a id="installation"></a>
 
@@ -157,6 +157,10 @@ import {radixUniverse, RadixUniverse} from 'radixdlt'
 radixUniverse.bootstrap(RadixUniverse.LOCALHOST_SINGLENODE)
 ```
 
+{% hint style="info" %}
+**Note:** the `LOCALHOST_SINGLENODE` configuration requires a locally hosted [Betanet Emulator](https://docs.radixdlt.com/kb/develop/betanet-emulator) running. Review [this article](https://docs.radixdlt.com/kb/develop/betanet-emulator) to set it up on your computer. 
+{% endhint %}
+
 ### Creating our own Identity  <a id="creating-our-own-identity"></a>
 
 As we want to interact with the ledger and be able to sign and decrypt atoms, we'll need to have our own [Identity](get-started.md#identity). To create a new random identity, we use the `RadixIdentityManager`:
@@ -242,7 +246,7 @@ myAccount.transferSystem.getTokenUnitsBalanceUpdates().subscribe(balance => {
 ```
 
 {% hint style="info" %}
-The `balance` includes the type of token, and the amount of tokens in token units, which are stored in a Decimal.js object.
+**Note:** the `balance` includes the type of token, and the amount of tokens in token units, which are stored in a `Decimal.js` object.
 {% endhint %}
 
 ### Handling tokens in Radix  <a id="handling-tokens-in-radix"></a>
@@ -265,7 +269,7 @@ Our last step is to send some of the free test tokens that we've got from the Fa
 
 ```javascript
 // Put your friends' address here
-const toAddress = '9i9hgAyBQuKvkw7Tg5FEbML59gDmtiwbJwAjBgq5mAU4iaA1ykM'
+const toAddress = 'JHn1iZFKf3GPwk7dMcsYRN9gG8BCSdsvQa8CBENuiwV69Y9pPCB'
 const toAccount = RadixAccount.fromAddress(toAddress, true)
 ```
 
@@ -316,7 +320,7 @@ myAccount.transferSystem.getTokenUnitsBalanceUpdates().subscribe(balance => {
   if (nativeTokenBalance.greaterThan(5)) {
 
     // Put your friends' address here
-    const toAddress = '9i9hgAyBQuKvkw7Tg5FEbML59gDmtiwbJwAjBgq5mAU4iaA1ykM'
+    const toAddress = 'JHn1iZFKf3GPwk7dMcsYRN9gG8BCSdsvQa8CBENuiwV69Y9pPCB'
     const toAccount = RadixAccount.fromAddress(toAddress, true)
 
     // Send 5 tokens to the address
@@ -333,9 +337,13 @@ Finally, to see this code running, we have to include it in our Node.js project.
 document.getElementById('root').innerHTML = 'My address: '+ myAccount.getAddress();
 ```
 
-To run the dApp, use `npm start`, and point your browser to [http://127.0.0.1:9000](http://127.0.0.1:9000/). You should see your address on the main window, and if you open the developer console you will see the messages and atoms flowing through the network:
+To run the dApp, use `npm start`, and point your browser to [http://127.0.0.1:8080](http://localhost:8080/). You should see your address on the main window, and if you open the developer console you will see the messages and atoms flowing through the network:
 
 ![](https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-LMPbV3hGbTEzGtYlH-m%2F-LPeLHn0knYfHDq1cHWh%2F-LPePT4SoHkB1ViOip-V%2FScreenshot%202018-10-24%2013.52.26.png?alt=media&token=80810e01-45be-4644-823d-8cbe5abaa1d6)
+
+{% hint style="info" %}
+**Note:** if you are running the local [Betanet Emulator](https://docs.radixdlt.com/kb/develop/betanet-emulator), be sure to edit the `/config/webpack.dev.js` file and change the `port` value to avoid issues.
+{% endhint %}
 
 ## Beyond the basics  <a id="beyond-the-basics"></a>
 
